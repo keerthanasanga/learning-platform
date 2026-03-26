@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
 <body>
 
-<h2>Admin Dashboard</h2>
+<h1>Admin Dashboard</h1>
 
-<button onclick="loadCourses()">View Courses</button>
+<button onclick="logout()">Logout</button>
 
+<hr>
+
+<h2>Add Course</h2>
+<input id="title" placeholder="Course Title"><br><br>
+<input id="description" placeholder="Description"><br><br>
+<button onclick="addCourse()">Add Course</button>
+
+<hr>
+
+<h2>Upload Video</h2>
+<input id="courseId" placeholder="Course ID"><br><br>
+<input type="file" id="video"><br><br>
+<button onclick="uploadVideo()">Upload Video</button>
+
+<hr>
+
+<h2>Upload PDF</h2>
+<input id="courseIdPdf" placeholder="Course ID"><br><br>
+<input type="file" id="pdf"><br><br>
+<button onclick="uploadPDF()">Upload PDF</button>
+
+<hr>
+
+<h2>All Courses</h2>
 <div id="courses"></div>
 
-<script src="js/courses.js"></script>
+<script src="js/admin.js"></script>
 
 </body>
 </html>
