@@ -17,6 +17,17 @@ router.get("/courses", (req, res) => {
     res.json(result);
   });
 });
+
+// ================= ADD COURSE =================
+router.post("/courses", (req, res) => {
+  const { title } = req.body;
+
+  db.query("INSERT INTO courses (title) VALUES (?)", [title], (err) => {
+    if (err) return res.json({ error: err });
+    res.json({ message: "Course added" });
+  });
+});
+
 // ================= ADD CONTENT =================
 router.post("/contents", (req, res) => {
   const { title, url, type, course_id } = req.body;
@@ -64,6 +75,27 @@ router.delete("/contents/:id", (req, res) => {
       res.json({ message: "Content deleted" });
     }
   );
+});
+
+// ================= DELETE COURSE =================
+router.delete("/courses/:id", (req, res) => {
+  const courseId = req.params.id;
+
+  // Delete enrollments first
+  db.query("DELETE FROM enrollments WHERE course_id = ?", [courseId], (err) => {
+    if (err) return res.json({ error: err });
+
+    // Delete contents
+    db.query("DELETE FROM contents WHERE course_id = ?", [courseId], (err) => {
+      if (err) return res.json({ error: err });
+
+      // Delete course
+      db.query("DELETE FROM courses WHERE id = ?", [courseId], (err) => {
+        if (err) return res.json({ error: err });
+        res.json({ message: "Course deleted" });
+      });
+    });
+  });
 });
 
 module.exports = router;
