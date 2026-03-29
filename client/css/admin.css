@@ -1,0 +1,725 @@
+/* ======================
+   Admin Dashboard - Professional Light Theme
+   Clean & Elegant Design with Soft Colors
+   ====================== */
+
+/* ----- CSS Variables ----- */
+:root {
+  /* Primary Colors - Soft & Professional */
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #60a5fa;
+  --primary-soft: #eff6ff;
+  --primary-glow: rgba(59, 130, 246, 0.1);
+  
+  /* Secondary Colors */
+  --secondary: #8b5cf6;
+  --secondary-light: #a78bfa;
+  --success: #10b981;
+  --success-light: #d1fae5;
+  --danger: #ef4444;
+  --danger-light: #fee2e2;
+  --warning: #f59e0b;
+  --warning-light: #fef3c7;
+  --info: #06b6d4;
+  --info-light: #cffafe;
+  
+  /* Neutral Colors - Clean & Modern */
+  --bg-primary: #f9fafb;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f3f4f6;
+  --bg-hover: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
+  
+  /* Borders */
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
+  --border-focus: #3b82f6;
+  
+  /* Shadows - Soft & Subtle */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+  --shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  
+  /* Border Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+}
+
+/* ----- Base Styles ----- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding: 2rem;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle Background Pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 25% 0%, rgba(59, 130, 246, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ----- Navbar ----- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
+  margin: -2rem -2rem 2rem -2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+}
+
+.logout-btn {
+  padding: 10px 20px;
+  background: var(--danger);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.logout-btn:hover {
+  background: var(--danger-dark, #dc2626);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ----- Typography ----- */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+  animation: slideDown 0.5s ease;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 3px;
+  animation: widthExpand 0.6s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes widthExpand {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 80px;
+    opacity: 1;
+  }
+}
+
+/* ----- Add Course Section ----- */
+.add-course {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  margin-bottom: 2.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  animation: fadeInUp 0.5s ease;
+}
+
+.add-course:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+  transform: translateY(-1px);
+}
+
+.add-course input {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.875rem 1.25rem;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--bg-primary);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.add-course input:focus {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-focus);
+}
+
+.add-course input::placeholder {
+  color: var(--text-light);
+}
+
+.add-course button {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.add-course button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  filter: brightness(1.05);
+}
+
+.add-course button:active {
+  transform: translateY(0);
+}
+
+/* ----- Course Grid ----- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.75rem;
+  animation: fadeIn 0.6s ease;
+}
+
+/* ----- Cards - Clean Design ----- */
+.card {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  position: relative;
+  box-shadow: var(--shadow-xs);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Card Header */
+.card h3 {
+  padding: 1.5rem 1.5rem 0.75rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card h3::before {
+  content: '📚';
+  font-size: 1.3rem;
+  transition: transform var(--transition-fast);
+  display: inline-block;
+}
+
+.card:hover h3::before {
+  transform: rotate(5deg) scale(1.05);
+}
+
+/* Card Stats */
+.card p {
+  padding: 0 1.5rem 1rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.card p::before {
+  content: '👥';
+  font-size: 1rem;
+  background: var(--primary-soft);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Buttons Container */
+.card button {
+  margin: 0.5rem 1.5rem;
+  padding: 0.7rem;
+  width: calc(100% - 3rem);
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: white;
+}
+
+/* Button Variants - Soft & Professional */
+.add-btn {
+  background: var(--primary);
+  margin-top: 0;
+}
+
+.add-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.assign-btn {
+  background: var(--secondary);
+}
+
+.assign-btn:hover {
+  background: #7c3aed;
+  transform: translateY(-2px);
+}
+
+.view-btn {
+  background: var(--info);
+}
+
+.view-btn:hover {
+  background: #0891b2;
+  transform: translateY(-2px);
+}
+
+.delete-btn {
+  background: var(--danger);
+  margin-bottom: 1.5rem;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+.card button:active {
+  transform: translateY(0);
+}
+
+/* Button Icons */
+.add-btn::before { content: '+'; font-size: 1.1rem; font-weight: bold; }
+.assign-btn::before { content: '📝'; font-size: 0.9rem; }
+.view-btn::before { content: '👁️'; font-size: 0.9rem; }
+.delete-btn::before { content: '🗑️'; font-size: 0.9rem; }
+
+/* ----- Empty State ----- */
+.empty-state {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  border: 2px dashed var(--border);
+  transition: var(--transition-base);
+}
+
+.empty-state:hover {
+  border-color: var(--primary-light);
+  background: var(--bg-primary);
+}
+
+.empty-state::before {
+  content: '✨';
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  animation: float 3s ease-in-out infinite;
+}
+
+.empty-state p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ----- Animations ----- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.card {
+  animation: cardAppear 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1) backwards;
+}
+
+.card:nth-child(1) { animation-delay: 0s; }
+.card:nth-child(2) { animation-delay: 0.05s; }
+.card:nth-child(3) { animation-delay: 0.1s; }
+.card:nth-child(4) { animation-delay: 0.15s; }
+.card:nth-child(5) { animation-delay: 0.2s; }
+.card:nth-child(6) { animation-delay: 0.25s; }
+
+/* Flash Animation for New Cards */
+@keyframes flash {
+  0% {
+    background: rgba(59, 130, 246, 0.1);
+    transform: scale(1);
+  }
+  50% {
+    background: rgba(59, 130, 246, 0.05);
+    transform: scale(1.01);
+  }
+  100% {
+    background: var(--bg-secondary);
+    transform: scale(1);
+  }
+}
+
+.card.flash {
+  animation: flash 0.5s ease;
+}
+
+/* Remove Animation */
+@keyframes removeCard {
+  to {
+    opacity: 0;
+    transform: translateX(30px) scale(0.95);
+  }
+}
+
+.card.removing {
+  animation: removeCard 0.3s ease forwards;
+  pointer-events: none;
+}
+
+/* Loading State */
+.add-course button.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.add-course button.loading::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Input Shake Animation */
+.input-shake {
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ----- Scrollbar - Clean Design ----- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* ----- Focus States ----- */
+button:focus-visible,
+input:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* ----- Selection ----- */
+::selection {
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+}
+
+/* ----- Responsive Design ----- */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h1::after {
+    width: 60px;
+  }
+  
+  .add-course {
+    flex-direction: column;
+    padding: 1.25rem;
+  }
+  
+  .add-course input,
+  .add-course button {
+    width: 100%;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .card button {
+    width: calc(100% - 3rem);
+  }
+  
+  .card h3 {
+    font-size: 1.2rem;
+    padding: 1.25rem 1.25rem 0.5rem;
+  }
+  
+  .card p {
+    padding: 0 1.25rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .card button {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+  
+  .empty-state::before {
+    font-size: 3rem;
+  }
+  
+  .empty-state p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ----- Card Hover Effects ----- */
+.card {
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* ----- Button Active States ----- */
+.card button:active {
+  transform: translateY(0);
+}
+
+/* ----- Input Autofill Style ----- */
+.add-course input:-webkit-autofill,
+.add-course input:-webkit-autofill:hover,
+.add-course input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-primary);
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg-primary) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ----- Subtle Gradient Text for Card Titles ----- */
+.card h3 {
+  background: linear-gradient(135deg, var(--text-primary), var(--primary-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card h3::before {
+  background: none;
+  -webkit-background-clip: unset;
+  color: var(--primary);
+}
+
+
+#contentList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.content-card {
+  background: #1e293b;
+  color: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+}
+
+.content-card a {
+  display: inline-block;
+  margin: 10px 0;
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.content-card button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}

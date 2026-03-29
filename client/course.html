@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Course Content</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="container">
+  <h1 id="courseTitle"></h1>
+
+  <!-- Add Content -->
+  <input id="contentTitle" placeholder="Title">
+<input id="contentLink" placeholder="YouTube / PDF Link">
+
+<select id="type">
+  <option value="video">Video</option>
+  <option value="pdf">PDF</option>
+</select>
+
+<button onclick="addContent()">Add Content</button>
+
+  <!-- Content List -->
+  <div id="contentList"></div>
+
+  <br>
+  <button onclick="goBack()">⬅ Back</button>
+</div>
+
+<script src="js/course.js"></script>
+</body>
+</html>

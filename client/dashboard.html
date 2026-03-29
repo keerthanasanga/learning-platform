@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="css/student.css">
+</head>
 <body>
 
-<h2>Dashboard</h2>
+<!-- 🔷 NAVBAR -->
+<header class="navbar">
+  <h1 class="logo">LearnHub</h1>
+  <div class="nav-buttons">
+    <button class="my-btn" onclick="showMyCourses()">My Courses</button>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</header>
 
-<button onclick="loadCourses()">Load Courses</button>
+<!-- 🔷 STATS -->
+<section class="stats">
+  <div class="card">
+    <h3 id="totalCourses">0</h3>
+    <p>Total Courses</p>
+  </div>
+  <div class="card">
+    <h3 id="enrolledCount">0</h3>
+    <p>Enrolled</p>
+  </div>
+  <div class="card">
+    <h3 id="availableCount">0</h3>
+    <p>Available</p>
+  </div>
+</section>
 
-<div id="courses"></div>
+<!-- 🔷 MAIN CONTENT -->
+<main>
+  <div id="courseList" class="grid"></div>
+  <div id="myCourses" class="grid hidden"></div>
+</main>
 
-<script src="js/courses.js"></script>
-
+<script src="js/student.js"></script>
 </body>
 </html>
