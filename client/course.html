@@ -10,21 +10,35 @@
   <h1 id="courseTitle"></h1>
 
   <!-- Add Content -->
-  <input id="contentTitle" placeholder="Title">
-<input id="contentLink" placeholder="YouTube / PDF Link">
+  <div class="add-course">
+    <input id="contentTitle" placeholder="Content Title" type="text">
 
-<select id="type">
-  <option value="video">Video</option>
-  <option value="pdf">PDF</option>
-</select>
+    <!-- Content Type Selection -->
+    <select id="contentType" onchange="toggleContentInput()">
+      <option value="video">YouTube Video</option>
+      <option value="pdf">PDF Document</option>
+    </select>
 
-<button onclick="addContent()">Add Content</button>
+    <!-- YouTube Video Input -->
+    <div id="videoInput" class="content-input">
+      <input id="videoUrl" placeholder="YouTube Video URL (e.g., https://www.youtube.com/watch?v=...)" type="url">
+    </div>
+
+    <!-- PDF Upload Input -->
+    <div id="pdfInput" class="content-input" style="display: none;">
+      <input id="pdfFile" type="file" accept=".pdf" onchange="updateFileName()">
+      <div id="fileName" class="file-name" onclick="document.getElementById('pdfFile').click()">No file selected</div>
+      <div class="file-info">Click to select PDF file (max 10MB)</div>
+    </div>
+
+    <button onclick="addContent()">Add Content</button>
+  </div>
 
   <!-- Content List -->
   <div id="contentList"></div>
 
   <br>
-  <button onclick="goBack()">⬅ Back</button>
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
 </div>
 
 <script src="js/course.js"></script>

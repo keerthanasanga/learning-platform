@@ -5,7 +5,3 @@ Tech Stack:
 - Express
 - MySQL
 - HTML CSS JS
-
-Run:
-npm install
-npm start

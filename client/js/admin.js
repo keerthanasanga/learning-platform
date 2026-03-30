@@ -3,8 +3,15 @@ const API = "http://localhost:5000/api/admin";
 // ================= FETCH FROM DB =================
 async function loadCourses() {
   try {
+    console.log("Loading courses from:", `${API}/courses`);
     const res = await fetch(`${API}/courses`);
+    console.log("Load courses response status:", res.status);
+    if (!res.ok) {
+      console.error("Failed to load courses:", res.status);
+      return;
+    }
     const courses = await res.json();
+    console.log("Loaded courses:", courses);
 
     renderCourses(courses);
   } catch (err) {
@@ -17,7 +24,10 @@ function renderCourses(courses) {
   const container = document.getElementById("courseContainer");
   container.innerHTML = "";
 
+  console.log("Rendering courses:", courses);
+
   courses.forEach((course) => {
+    console.log("Rendering course:", course.id, course.title);
 
     const card = document.createElement("div");
     card.className = "card";
@@ -64,14 +74,29 @@ async function addCourse() {
 
 // ================= DELETE =================
 async function deleteCourse(id) {
+  console.log("Delete button clicked for course:", id);
+  if (!confirm("Are you sure you want to delete this course? This will also delete all associated content and unenroll all students.")) {
+    return;
+  }
+
   try {
-    await fetch(`${API}/courses/${id}`, {
+    console.log("Sending DELETE request to:", `${API}/courses/${id}`);
+    const res = await fetch(`${API}/courses/${id}`, {
       method: "DELETE"
     });
+    console.log("Response status:", res.status);
 
-    loadCourses();
+    if (res.ok) {
+      alert("Course deleted successfully!");
+      loadCourses();
+    } else {
+      const error = await res.json();
+      console.error("Delete error:", error);
+      alert("Error deleting course: " + (error.message || error.error));
+    }
   } catch (err) {
     console.error("Error deleting:", err);
+    alert("Network error while deleting course. Please try again.");
   }
 }
 

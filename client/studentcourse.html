@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Content - LearnHub</title>
+  <link rel="stylesheet" href="css/student.css">
+</head>
 <body>
 
-<h1>My Course</h1>
+<!-- 🔷 NAVBAR -->
+<header class="navbar">
+  <h1 class="logo">LearnHub</h1>
+  <div class="nav-buttons">
+    <button class="my-btn" onclick="window.location.href='dashboard.html'">Dashboard</button>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</header>
 
-<div id="contentList"></div>
+<!-- 🔷 COURSE TITLE -->
+<section style="padding: 40px 10%; text-align: center;">
+  <h1 id="courseTitle" style="color: #38bdf8; font-size: 2.5em; margin-bottom: 10px;">My Course</h1>
+  <p style="color: #cbd5e1; font-size: 1.2em;">Access your course materials and content</p>
+</section>
+
+<!-- 🔷 CONTENT -->
+<main style="padding: 0 10%;">
+  <div id="contentList"></div>
+</main>
 
 <script src="js/studentcourse.js"></script>
+
+<script>
+// Logout function
+function logout() {
+  localStorage.clear();
+  window.location.href = "login.html";
+}
+</script>
 
 </body>
 </html>
